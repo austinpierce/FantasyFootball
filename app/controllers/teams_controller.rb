@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    @teams = HTTParty.get("https://www.fantasyfootballnerd.com/service/nfl-teams/json/test")
   end
 
   # GET /teams/1
