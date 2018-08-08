@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180808014635) do
+ActiveRecord::Schema.define(version: 20180808021628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fantasy_players", force: :cascade do |t|
-    t.integer "player_id"
-    t.bigint "fantasy_team_id"
+    t.bigint "player_id"
+    t.integer "fantasy_team_id", default: 1
     t.boolean "watch", default: false
     t.boolean "keeper", default: false
     t.float "auction_projected_price"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180808014635) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fantasy_team_id"], name: "index_fantasy_players_on_fantasy_team_id"
+    t.index ["player_id"], name: "index_fantasy_players_on_player_id"
   end
 
   create_table "fantasy_teams", force: :cascade do |t|

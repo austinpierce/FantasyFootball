@@ -1,3 +1,6 @@
 class FantasyPlayer < ApplicationRecord
-  belongs_to :FantasyTeam
+  
+  belongs_to :player
+  belongs_to :fantasy_team
+ 
 end

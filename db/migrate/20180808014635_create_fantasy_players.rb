@@ -1,7 +1,7 @@
 class CreateFantasyPlayers < ActiveRecord::Migration[5.1]
   def change
     create_table :fantasy_players do |t|
-      t.integer :player_id
+      t.references :player
       t.references :fantasy_team
       t.boolean :watch, default: false
       t.boolean :keeper, default: false
