@@ -1,5 +1,8 @@
 class Player < ApplicationRecord
   self.primary_key = :id
+  
+  has_one :fantasy_player
+  has_one :fantasy_team, through: :fantasy_player
 
   def self.InitialDraftRankings
     players = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-rankings/json/test/1/")
