@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fantasy_team_name: 
+  owner_name: 
+  auction_cash: 
+
+two:
+  fantasy_team_name: 
+  owner_name: 
+  auction_cash: 

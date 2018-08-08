@@ -1,6 +1,7 @@
 class Player < ApplicationRecord
-  
-  def self.draftrankings
+  self.primary_key = :id
+
+  def self.InitialDraftRankings
     players = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-rankings/json/test/1/")
 
     playerSize = players["DraftRankings"].size
@@ -21,7 +22,7 @@ class Player < ApplicationRecord
       positionRank = player["positionRank"]
       overallRank = player["overallRank"]
       
-      Player.create(player_id: "#{playerId}", position: "#{playerPosition}", display_name: "#{displayName}", 
+      Player.create(id: "#{playerId}", position: "#{playerPosition}", display_name: "#{displayName}", 
                     first_name: "#{firstName}", last_name: "#{lastName}", team: "#{team}",
                     bye_week: "#{byeWeek}", nerd_rank: "#{nerdRank}", position_rank: "#{positionRank}",
                     overall_rank: "#{overallRank}")
@@ -30,5 +31,6 @@ class Player < ApplicationRecord
     end
 
   end
+  
 
 end

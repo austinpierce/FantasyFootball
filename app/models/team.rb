@@ -2,7 +2,7 @@ class Team < ApplicationRecord
   
   include HTTParty
   
-  def self.footballteams
+  def self.IntitialFootballTeams
        teams = HTTParty.get("https://www.fantasyfootballnerd.com/service/nfl-teams/json/test")
     
         teamSize = teams["NFLTeams"].size
