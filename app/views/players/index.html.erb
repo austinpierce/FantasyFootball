@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>PlayerId</th>
       <th>Fullname</th>
       <th>Position</th>
       <th>Team</th>
@@ -15,13 +14,11 @@
       <th>Projected Price</th>
       <th>Spend Price</th>
       <th>Sold Price</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
-    <% @fantasy_players.each do |player| %>
+    <% @fantasy_players.order("nerd_rank").each do |player| %>
       <tr>
-        <td><%= player.id %></td>
         <td><%= player.display_name %></td>
         <td><%= player.position %></td>
         <td><%= player.team %></td>
