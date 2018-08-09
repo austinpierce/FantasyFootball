@@ -1,0 +1,19 @@
+<h1 align = "center">
+  Fantasy Teams
+</h1>
+<br>
+<%= link_to "Create Fantasy Team", new_fantasy_team_path %>
+<% @fantasyTeams.each do |fantasyTeams| %>
+<table align = "center">
+  <tr>
+    <th>Team Name</th>
+    <th>Team Owner</th>
+    <th>Auction Cash</th>
+  </tr>
+  <tr>
+    <td><%= fantasyTeams.fantasy_team_name %></td>
+    <td><%= fantasyTeams.owner_name %></td>
+    <td><%= number_to_currency(fantasyTeams.auction_cash) %></td>
+  </tr>
+</table>
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_for(@fantasyTeam, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<br>
+<%= f.label :fantasy_team_name %>
+<%= f.text_field :fantasy_team_name, class: "form-control", autofocus: true %>
+<br>
+<%= f.label :owner_name %>
+<%= f.text_field :owner_name, class: "form-control" %>
+<br>
+<%= f.label :auction_cash %>
+<%= f.text_field :auction_cash, class: "form-control" %>
+<br>
+<%= f.submit %>
+
+<% end %>
