@@ -3,11 +3,11 @@
 
 <%= form_for_filterrific @filterrific do |f| %>
   <div>
-    Country
+    Position
     <%= f.select(
       :filter_player_position,
       @filterrific.select_options[:filter_player_position],
-      { include_blank: '- Any -' }
+      { include_blank: '- All -' }
     ) %>
   </div>
   <div>

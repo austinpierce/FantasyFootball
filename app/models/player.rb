@@ -5,7 +5,7 @@ class Player < ApplicationRecord
   has_one :fantasy_team, through: :fantasy_player
     
   filterrific(
-   default_filter_params: { filter_player_position: 'RB' },
+   default_filter_params: { filter_player_position: 0 },
    available_filters: [
      :filter_player_position
    ]
@@ -18,7 +18,7 @@ class Player < ApplicationRecord
 
   
   def self.options_for_select
-    order('LOWER(position)').map { |e| [e.position, e.id] }
+    Player.select(:position).distinct.map(&:position)
   end
   
   def self.InitialDraftRankings
