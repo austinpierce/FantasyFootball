@@ -1,0 +1,41 @@
+<div id="filterrific_results">
+
+  <div>
+    <%#= page_entries_info player # provided by will_paginate %>
+  </div>
+<table>
+  <thead>
+    <tr>
+      <th>Fullname</th>
+      <th>Position</th>
+      <th>Team</th>
+      <th>Nerd Rank</th>
+      <th>Overall Rank</th>
+      <th>Fantasy Team ID</th>
+      <th>Watching</th>
+      <th>Keeper</th>
+      <th>Projected Price</th>
+      <th>Spend Price</th>
+      <th>Sold Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @fantasy_players.order("nerd_rank").each do |player| %>
+      <tr>
+        <td><%= player.display_name %></td>
+        <td><%= player.position %></td>
+        <td><%= player.team %></td>
+        <td><%= player.nerd_rank %></td>
+        <td><%= player.overall_rank %></td>
+        <td><%= player.fantasy_team.fantasy_team_name %></td>
+        <td><%= player.fantasy_player.watch %></td>
+        <td><%= player.fantasy_player.keeper %></td>
+        <td><%= number_to_currency(player.fantasy_player.auction_projected_price) %></td>
+        <td><%= number_to_currency(player.fantasy_player.auction_spend_price) %></td>
+        <td><%= number_to_currency(player.fantasy_player.auction_sold_price) %></td>
+        <td><%= link_to "Edit", edit_fantasy_player_path(player) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

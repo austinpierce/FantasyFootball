@@ -1,37 +1,26 @@
-<h1>Players</h1>
-<%= will_paginate %>
-<table>
-  <thead>
-    <tr>
-      <th>Fullname</th>
-      <th>Position</th>
-      <th>Team</th>
-      <th>Nerd Rank</th>
-      <th>Overall Rank</th>
-      <th>Fantasy Team ID</th>
-      <th>Watching</th>
-      <th>Keeper</th>
-      <th>Projected Price</th>
-      <th>Spend Price</th>
-      <th>Sold Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @fantasy_players.order("nerd_rank").each do |player| %>
-      <tr>
-        <td><%= player.display_name %></td>
-        <td><%= player.position %></td>
-        <td><%= player.team %></td>
-        <td><%= player.nerd_rank %></td>
-        <td><%= player.overall_rank %></td>
-        <td><%= player.fantasy_team.fantasy_team_name %></td>
-        <td><%= player.fantasy_player.watch %></td>
-        <td><%= player.fantasy_player.keeper %></td>
-        <td><%= number_to_currency(player.fantasy_player.auction_projected_price) %></td>
-        <td><%= number_to_currency(player.fantasy_player.auction_spend_price) %></td>
-        <td><%= number_to_currency(player.fantasy_player.auction_sold_price) %></td>
-        <td><%= link_to "Edit", edit_fantasy_player_path(player) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%# app/views/students/index.html.erb %>
+<h1>Students</h1>
+
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    Country
+    <%= f.select(
+      :filter_player_position,
+      @filterrific.select_options[:filter_player_position],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+  <%# add an automated spinner to your form when the list is refreshed %>
+  <%#= render_filterrific_spinner %>
+<% end %>
+
+<%= render(
+  partial: 'players/list',
+  locals: { players: @players }
+) %>
