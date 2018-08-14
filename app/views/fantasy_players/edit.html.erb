@@ -1,5 +1,27 @@
 <h1>
-  Hello
- <%= @fantasy_player.display_name %>
-  <%= @fantasy_player.fantasy_player.watch %>
+  Edit: <%= @fantasy_player.display_name %>
+  
+  <%= form_for @fantasy_player.fantasy_player do |f| %>
+  <p>
+    Team<br>
+    <%= f.collection_select :fantasy_team_id, @teams, :id, :fantasy_team_name %>
+  </p>
+  <p>
+    <%= f.label :watch %>
+    <%= f.check_box :watch %>
+  </p>
+  <p>
+    <%= f.label :keeper %>
+    <%= f.check_box :keeper %>
+  </p>
+  <p>
+    <%= f.label :auction_spend_price %> <br>
+    <%= f.text_field :auction_spend_price %>
+  </p>
+  <p>
+    <%= f.label :auction_sold_price %> <br>
+    <%= f.text_field :auction_sold_price %>
+  </p>  
+   <%= f.submit %> 
+  <% end %>
 </h1>
