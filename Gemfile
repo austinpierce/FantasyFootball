@@ -23,6 +23,7 @@ gem 'fantasy_football_nerd'
 gem 'rest-client'
 gem 'json'
 gem 'httparty'
+gem 'will_paginate', '3.1.5'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
