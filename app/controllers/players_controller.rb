@@ -8,11 +8,12 @@ class PlayersController < ApplicationController
       select_options: {
         #sorted_by: Player.options_for_sorted_by,
         filter_player_position: Player.options_for_select,
-        filter_fantasy_team: Player.options_for_fantasy_team
+        filter_fantasy_team: Player.options_for_fantasy_team,
+        filter_watching: Player.options_for_watch
       },
       persistence_id: 'shared_key',
       default_filter_params: {},
-      available_filters: [:search_query, :filter_player_position, :filter_fantasy_team],
+      available_filters: [:search_query, :filter_player_position, :filter_fantasy_team, :filter_watching],
       sanitize_params: true
     ) or return
 

@@ -25,6 +25,14 @@
       { include_blank: '- All -' }
     ) %>
 </div>
+<div>
+    Watching
+    <%= f.select(
+      :filter_watching,
+      @filterrific.select_options[:filter_watching],
+      { include_blank: '- All -' }
+    ) %>
+</div>
   <div>
     <%= link_to(
       'Reset filters',
