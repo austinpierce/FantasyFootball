@@ -8,12 +8,17 @@ class Player < ApplicationRecord
    #default_filter_params: { filter_player_position: 0 },
    available_filters: [
      :search_query,
-     :filter_player_position
+     :filter_player_position,
+     :filter_fantasy_team
    ]
  )
 
   scope :filter_player_position, lambda { |position|
     where(position: [*position])
+  }
+  
+  scope :filter_fantasy_team, lambda { |team|
+    where(fantasy_teams: { fantasy_team_name: team }).joins(:fantasy_team)
   }
   
   scope :search_query, lambda { |query|
@@ -34,6 +39,10 @@ class Player < ApplicationRecord
   
   def self.options_for_select
     Player.select(:position).distinct.map(&:position)
+  end
+  
+  def self.options_for_fantasy_team
+    FantasyTeam.select(:fantasy_team_name).distinct.map(&:fantasy_team_name)
   end
   
   def self.InitialDraftRankings

@@ -7,11 +7,12 @@ class PlayersController < ApplicationController
       params[:filterrific],
       select_options: {
         #sorted_by: Player.options_for_sorted_by,
-        filter_player_position: Player.options_for_select
+        filter_player_position: Player.options_for_select,
+        filter_fantasy_team: Player.options_for_fantasy_team
       },
       persistence_id: 'shared_key',
       default_filter_params: {},
-      available_filters: [:search_query, :filter_player_position],
+      available_filters: [:search_query, :filter_player_position, :filter_fantasy_team],
       sanitize_params: true
     ) or return
 

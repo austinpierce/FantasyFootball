@@ -16,7 +16,15 @@
       @filterrific.select_options[:filter_player_position],
       { include_blank: '- All -' }
     ) %>
-  </div>
+</div>
+<div>
+    Fantasy Team
+    <%= f.select(
+      :filter_fantasy_team,
+      @filterrific.select_options[:filter_fantasy_team],
+      { include_blank: '- All -' }
+    ) %>
+</div>
   <div>
     <%= link_to(
       'Reset filters',
