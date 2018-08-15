@@ -5,8 +5,9 @@ class Player < ApplicationRecord
   has_one :fantasy_team, through: :fantasy_player
     
   filterrific(
-   default_filter_params: { filter_player_position: 0 },
+   #default_filter_params: { filter_player_position: 0 },
    available_filters: [
+     :search_query,
      :filter_player_position
    ]
  )
@@ -15,7 +16,21 @@ class Player < ApplicationRecord
     where(position: [*position])
   }
   
-
+  scope :search_query, lambda { |query|
+  return nil  if query.blank?
+  # condition query, parse into individual keywords
+  terms = query.downcase.split(/\s+/)
+  terms = terms.map { |e|
+    (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+  }
+  num_or_conds = 2
+  where(
+    terms.map { |term|
+      "(LOWER(players.first_name) LIKE ? OR LOWER(players.last_name) LIKE ?)"
+    }.join(' AND '),
+    *terms.map { |e| [e] * num_or_conds }.flatten
+  )
+  }
   
   def self.options_for_select
     Player.select(:position).distinct.map(&:position)

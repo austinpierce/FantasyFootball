@@ -1,8 +1,6 @@
 class PlayersController < ApplicationController
   
   def index
-  #  @players = Player.paginate(page: params[:page], per_page: 50)
-   # @fantasy_players = Player.joins(:fantasy_player).paginate(page: params[:page], per_page: 50)
     
  @filterrific = initialize_filterrific(
       Player,
@@ -13,12 +11,11 @@ class PlayersController < ApplicationController
       },
       persistence_id: 'shared_key',
       default_filter_params: {},
-      available_filters: [:filter_player_position],
+      available_filters: [:search_query, :filter_player_position],
       sanitize_params: true
     ) or return
 
-    #@students = @filterrific.find.page(params[:page])
-    @players = @filterrific.find.page(params[:page])
+    #@players = @filterrific.find.page(params[:page])
     @fantasy_players = @filterrific.find.page(params[:page])
 
     # Respond to html for initial page load and to js for AJAX filter updates.

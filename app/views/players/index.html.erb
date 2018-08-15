@@ -2,7 +2,14 @@
 <h1>Players</h1>
 
 <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
-  <div>
+<div>
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query
+    ) %>
+  </div>  
+<div>
     Position
     <%= f.select(
       :filter_player_position,
@@ -16,8 +23,6 @@
       reset_filterrific_url,
     ) %>
   </div>
-  <%# add an automated spinner to your form when the list is refreshed %>
-  <%#= render_filterrific_spinner %>
 <%= f.submit 'Filter' %>
 <% end %>
 
