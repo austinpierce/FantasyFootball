@@ -10,7 +10,8 @@ class Player < ApplicationRecord
      :search_query,
      :filter_player_position,
      :filter_fantasy_team,
-     :filter_watching
+     :filter_watching,
+     :sorted_by
    ]
  )
 
@@ -42,6 +43,18 @@ class Player < ApplicationRecord
   )
   }
   
+  scope :sorted_by, lambda { |sort_option|
+  # extract the sort direction from the param value.
+  direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+  case sort_option.to_s
+  when /^overall_rank_/
+    order("players.overall_rank #{ direction }")
+
+  else
+    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+  end
+}
+  
   def self.options_for_select
     Player.select(:position).distinct.map(&:position)
   end
@@ -52,6 +65,12 @@ class Player < ApplicationRecord
   
   def self.options_for_watch
     FantasyPlayer.select(:watch).distinct.map(&:watch)
+  end
+  
+  def self.options_for_sorted_by
+    [
+      ['Overall Rank', 'overall_rank_asc']
+    ]
   end
   
   def self.InitialDraftRankings
