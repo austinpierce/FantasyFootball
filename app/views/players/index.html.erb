@@ -1,7 +1,7 @@
 <%# app/views/students/index.html.erb %>
-<h1>Students</h1>
+<h1>Players</h1>
 
-<%= form_for_filterrific @filterrific do |f| %>
+<%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
   <div>
     Position
     <%= f.select(
@@ -18,6 +18,7 @@
   </div>
   <%# add an automated spinner to your form when the list is refreshed %>
   <%#= render_filterrific_spinner %>
+<%= f.submit 'Filter' %>
 <% end %>
 
 <%= render(

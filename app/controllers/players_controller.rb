@@ -19,7 +19,7 @@ class PlayersController < ApplicationController
 
     #@students = @filterrific.find.page(params[:page])
     @players = @filterrific.find.page(params[:page])
-    @fantasy_players = Player.joins(:fantasy_player).paginate(page: params[:page], per_page: 50)
+    @fantasy_players = @filterrific.find.page(params[:page])
 
     # Respond to html for initial page load and to js for AJAX filter updates.
     respond_to do |format|

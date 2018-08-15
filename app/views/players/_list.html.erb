@@ -1,7 +1,7 @@
 <div id="filterrific_results">
 
   <div>
-    <%#= page_entries_info player # provided by will_paginate %>
+    <%= page_entries_info @fantasy_players %>
   </div>
 <table>
   <thead>
@@ -38,4 +38,6 @@
     <% end %>
   </tbody>
 </table>
+  <%= will_paginate @fantasy_players %>
 </div>
+
