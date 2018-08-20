@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   
   def index
-    
+    @fantasy_teams = FantasyTeam.all
  @filterrific = initialize_filterrific(
       Player,
       params[:filterrific],

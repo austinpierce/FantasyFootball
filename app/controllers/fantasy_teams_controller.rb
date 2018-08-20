@@ -18,6 +18,10 @@ class FantasyTeamsController < ApplicationController
     end
   end
   
+  def show
+    @fantasyTeam = FantasyTeam.find(params[:id])
+  end
+  
   private
   
   def ft_params
