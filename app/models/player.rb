@@ -5,7 +5,7 @@ class Player < ApplicationRecord
   has_one :fantasy_team, through: :fantasy_player
     
   filterrific(
-   #default_filter_params: { filter_player_position: 0 },
+   default_filter_params: { sorted_by: 'nerd_rank_asc' },
    available_filters: [
      :search_query,
      :filter_player_position,
@@ -49,6 +49,16 @@ class Player < ApplicationRecord
   case sort_option.to_s
   when /^overall_rank_/
     order("players.overall_rank #{ direction }")
+  when /^nerd_rank_/
+    order("players.nerd_rank #{ direction }")
+  when /^position_rank_/
+    order("players.position_rank #{ direction }")
+  when /^projected_price_/
+    order("fantasy_players.auction_projected_price #{ direction }").includes(:fantasy_player).references(:fantasy_player)        
+  when /^spend_price_/
+    order("fantasy_players.auction_spend_price #{ direction }").includes(:fantasy_player).references(:fantasy_player)
+  when /^sold_price_/
+    order("fantasy_players.auction_sold_price #{ direction }").includes(:fantasy_player).references(:fantasy_player)
 
   else
     raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
@@ -69,9 +79,21 @@ class Player < ApplicationRecord
   
   def self.options_for_sorted_by
     [
-      ['Overall Rank', 'overall_rank_asc']
+      ['Nerd Rank', 'nerd_rank_asc'],
+      ['Overall Rank', 'overall_rank_asc'],
+      ['Position Rank', 'position_rank_asc'],
+      ['Projected Price (High)', 'projected_price_desc'],
+      ['Projected Price (Low)', 'projected_price_asc'],
+      ['Spend Price (High)', 'spend_price_desc'],
+      ['Spend Price (Low)', 'spend_price_asc'],
+      ['Sold Price (High)', 'sold_price_desc'],
+      ['Sold Price (Low)', 'sold_price_asc']
     ]
   end
+  
+#####################################################
+  # Load Script
+#####################################################
   
   def self.InitialDraftRankings
     players = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-rankings/json/test/1/")

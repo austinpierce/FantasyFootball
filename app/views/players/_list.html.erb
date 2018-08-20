@@ -11,7 +11,8 @@
       <th>Team</th>
       <th>Nerd Rank</th>
       <th>Overall Rank</th>
-      <th>Fantasy Team ID</th>
+      <th>Position Rank</th>
+      <th>Fantasy Team</th>
       <th>Watching</th>
       <th>Keeper</th>
       <th>Projected Price</th>
@@ -20,13 +21,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @fantasy_players.order("nerd_rank").each do |player| %>
+    <% @fantasy_players.each do |player| %>
       <tr>
         <td><%= player.display_name %></td>
         <td><%= player.position %></td>
         <td><%= player.team %></td>
         <td><%= player.nerd_rank %></td>
         <td><%= player.overall_rank %></td>
+        <td><%= player.position_rank %></td>
         <td><%= player.fantasy_team.fantasy_team_name %></td>
         <td><%= player.fantasy_player.watch %></td>
         <td><%= player.fantasy_player.keeper %></td>
