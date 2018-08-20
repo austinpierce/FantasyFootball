@@ -1,3 +1,15 @@
 <h1>
-  Welcome to <%= @fantasyTeam.fantasy_team_name %>
+  Team <%= @fantasyTeam.fantasy_team_name %>
 </h1>
+<h2>
+  Player Count: <%= @players.count %><br>
+  <%= FantasyTeam.position_count(@fantasyTeam) %>
+</h2>
+<h4>
+  Players:
+</h4>
+<% @players.each do |player| %>
+  <ul>
+    <li><%= player.player.display_name %>, <%= player.player.position %></li>
+  </ul>
+<% end %>

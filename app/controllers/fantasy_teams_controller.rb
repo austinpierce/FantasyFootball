@@ -20,6 +20,7 @@ class FantasyTeamsController < ApplicationController
   
   def show
     @fantasyTeam = FantasyTeam.find(params[:id])
+    @players = FantasyPlayer.joins(:player).where(fantasy_team_id: @fantasyTeam)
   end
   
   private
