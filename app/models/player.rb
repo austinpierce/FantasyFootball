@@ -2,6 +2,7 @@ class Player < ApplicationRecord
   self.primary_key = :id
   
   has_one :fantasy_player
+  has_one :fantasy_projection
   has_one :fantasy_team, through: :fantasy_player
     
   filterrific(
