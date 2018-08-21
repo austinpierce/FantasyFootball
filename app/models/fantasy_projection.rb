@@ -3,7 +3,7 @@ class FantasyProjection < ApplicationRecord
   belongs_to :player
   
   def self.QB_InitialProjections
-    qbs = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/test/QB/")
+    qbs = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/#{ENV["FOOTBALL_API"]}/QB/")
 
     playerSize = qbs["DraftProjections"].size
     arrayPosition = 0
@@ -30,7 +30,7 @@ class FantasyProjection < ApplicationRecord
   end
   
   def self.RB_InitialProjections
-    rbs = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/test/RB/")
+    rbs = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/#{ENV["FOOTBALL_API"]}/RB/")
 
     playerSize = rbs["DraftProjections"].size
     arrayPosition = 0
@@ -57,7 +57,7 @@ class FantasyProjection < ApplicationRecord
   end
   
   def self.WR_InitialProjections
-    wrs = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/test/WR/")
+    wrs = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/#{ENV["FOOTBALL_API"]}/WR/")
 
     playerSize = wrs["DraftProjections"].size
     arrayPosition = 0
@@ -84,7 +84,7 @@ class FantasyProjection < ApplicationRecord
   end
   
   def self.TE_InitialProjections
-    tes = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/test/TE/")
+    tes = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/#{ENV["FOOTBALL_API"]}/TE/")
 
     playerSize = tes["DraftProjections"].size
     arrayPosition = 0
@@ -111,7 +111,7 @@ class FantasyProjection < ApplicationRecord
   end
   
   def self.DEF_InitialProjections
-    defenses = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/test/DEF/")
+    defenses = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/#{ENV["FOOTBALL_API"]}/DEF/")
 
     playerSize = defenses["DraftProjections"].size
     arrayPosition = 0
@@ -136,7 +136,7 @@ class FantasyProjection < ApplicationRecord
   end
   
   def self.K_InitialProjections
-    kickers = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/test/K/")
+    kickers = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/#{ENV["FOOTBALL_API"]}/K/")
 
     playerSize = kickers["DraftProjections"].size
     arrayPosition = 0
