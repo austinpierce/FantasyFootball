@@ -23,4 +23,11 @@ class Auction < ApplicationRecord
 
   end 
   
+  def self.UpdateProjectedPrice
+    FantasyPlayer.connection.update("UPDATE fantasy_players as FP
+                SET auction_projected_price = A.auction_price
+                FROM auctions AS A 
+                WHERE FP.player_id = A.player_id")
+  end
+  
 end
