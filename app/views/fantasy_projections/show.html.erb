@@ -4,8 +4,14 @@
 
 <% @projections.each do |projection| %>
   <ul>
+    <% if projection.rec.nil? %>
     <li><strong>Fantasy Points: <%= projection.fantasy_points %></strong></li>
     <% avg_points_game = projection.fantasy_points / 17 %>
+    <% else %>
+     <% pprPoints = projection.fantasy_points + projection.rec %>
+    <li><strong>Fantasy Points: <%= pprPoints %></strong></li>
+    <% avg_points_game = pprPoints / 17 %>
+    <% end %>
       <li><strong>Points Per Game: <%= avg_points_game.to_i %></strong></li>
     <% if projection.position == "QB" %>
       <li>Completions: <%= projection.completions %></li>
