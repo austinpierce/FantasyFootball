@@ -3,18 +3,27 @@
 </h1>
 
 <% @projections.each do |projection| %>
-<% if projection.position = "QB" %>
   <ul>
     <li><strong>Fantasy Points: <%= projection.fantasy_points %></strong></li>
     <% avg_points_game = projection.fantasy_points / 17 %>
-    <li><strong>Points Per Game: <%= avg_points_game.to_i %></strong></li>
-    <li>Completions: <%= projection.completions %></li>
-    <li>Attempts: <%= projection.attempts %></li>
-    <li>Passing Yards: <%= projection.passing_yards %></li>
-    <li>Passing TDs: <%= projection.passing_td %></li>
-    <li>Passing INTs: <%= projection.passing_int %></li>
-    <li>Rush Yards: <%= projection.rush_yards %></li>
-    <li>Rush TDs: <%= projection.rush_td %></li>
-<% end %>
+      <li><strong>Points Per Game: <%= avg_points_game.to_i %></strong></li>
+    <% if projection.position == "QB" %>
+      <li>Completions: <%= projection.completions %></li>
+      <li>Attempts: <%= projection.attempts %></li>
+      <li>Passing Yards: <%= projection.passing_yards %></li>
+      <li>Passing TDs: <%= projection.passing_td %></li>
+      <li>Passing INTs: <%= projection.passing_int %></li>
+    <% end %>
+    <% if projection.position == "QB" || projection.position == "RB" %>
+      <li>Rush Yards: <%= projection.rush_yards %></li>
+      <li>Rush TDs: <%= projection.rush_td %></li>
+    <% end %>
+    <% if projection.position == "RB" %>
+      <li>Rush Attempts: <%= projection.rush_att %></li>
+      <li>Receptions: <%= projection.rec %></li>
+      <li>Receiving Yards: <%= projection.rec_yards %></li>
+      <li>Receiving TDs: <%= projection.rec_td %></li>
+      <li>Fumbles: <%= projection.fumbles %></li>
+    <% end %>
   </ul>
 <% end %>

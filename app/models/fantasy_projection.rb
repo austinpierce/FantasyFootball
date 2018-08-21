@@ -29,4 +29,31 @@ class FantasyProjection < ApplicationRecord
 
   end
   
+def self.RB_InitialProjections
+    rbs = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-projections/json/test/RB/")
+
+    playerSize = rbs["DraftProjections"].size
+    arrayPosition = 0
+
+    until playerSize == 0
+      
+      rb = rbs["DraftProjections"][arrayPosition]
+      
+      playerId = rb["playerId"]
+      rushAtt = rb["rushAtt"]
+      rushYards = rb["rushYards"]
+      rushTD = rb["rushTD"]
+      fumbles = rb["fumbles"]
+      rec = rb["rec"]
+      recYards = rb["recYards"]
+      recTD = rb["recTD"]
+      fantasyPoints = rb["fantasyPoints"]
+      
+      FantasyProjection.create(player_id: "#{playerId}", position: "RB", rush_att: "#{rushAtt}", rush_yards: "#{rushYards}", rush_td: "#{rushTD}", fumbles: "#{fumbles}", rec: "#{rec}", rec_yards: "#{recYards}", rec_td: "#{recTD}", fantasy_points: "#{fantasyPoints}")
+      playerSize -= 1
+      arrayPosition += 1
+    end
+
+  end
+  
 end
