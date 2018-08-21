@@ -14,16 +14,29 @@
       <li>Passing TDs: <%= projection.passing_td %></li>
       <li>Passing INTs: <%= projection.passing_int %></li>
     <% end %>
-    <% if projection.position == "QB" || projection.position == "RB" %>
-      <li>Rush Yards: <%= projection.rush_yards %></li>
-      <li>Rush TDs: <%= projection.rush_td %></li>
-    <% end %>
-    <% if projection.position == "RB" %>
-      <li>Rush Attempts: <%= projection.rush_att %></li>
+    <% if projection.position == "RB" || projection.position == "WR" || projection.position == "TE" %>
       <li>Receptions: <%= projection.rec %></li>
       <li>Receiving Yards: <%= projection.rec_yards %></li>
       <li>Receiving TDs: <%= projection.rec_td %></li>
+      <li>Rush Attempts: <%= projection.rush_att %></li>
       <li>Fumbles: <%= projection.fumbles %></li>
+    <% end %>
+    <% if projection.position == "QB" || projection.position == "RB" || projection.position == "WR" || projection.position == "TE" %>
+      <li>Rush Yards: <%= projection.rush_yards %></li>
+      <li>Rush TDs: <%= projection.rush_td %></li>
+    <% end %>
+    <% if projection.position == "DEF" %>
+      <li>Sacks: <%= projection.sacks %></li>
+      <li>Interceptions: <%= projection.interceptions %></li>
+      <li>Fumble Reception: <%= projection.fumble_rec %></li>
+      <li>TDs: <%= projection.td %></li>
+      <li>Special Team TDs: <%= projection.special_team_td %></li>
+    <% end %>
+    <% if projection.position == "K" %>
+      <li>Extra Points: <%= projection.xp %></li>
+      <li>Field Goals: <%= projection.fg %></li>
     <% end %>
   </ul>
 <% end %>
+
+<%= link_to "Back", players_path %>
