@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180808021628) do
+ActiveRecord::Schema.define(version: 20180820234700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,34 @@ ActiveRecord::Schema.define(version: 20180808021628) do
     t.datetime "updated_at", null: false
     t.index ["fantasy_team_id"], name: "index_fantasy_players_on_fantasy_team_id"
     t.index ["player_id"], name: "index_fantasy_players_on_player_id"
+  end
+
+  create_table "fantasy_projections", force: :cascade do |t|
+    t.bigint "player_id"
+    t.string "position"
+    t.float "completions"
+    t.float "attempts"
+    t.float "passing_yards"
+    t.float "passing_td"
+    t.float "passing_int"
+    t.float "rush_yards"
+    t.float "rush_att"
+    t.float "rush_td"
+    t.float "rec"
+    t.float "rec_yards"
+    t.float "rec_td"
+    t.float "fumbles"
+    t.float "sacks"
+    t.float "interceptions"
+    t.float "fumble_rec"
+    t.float "td"
+    t.float "special_team_td"
+    t.float "xp"
+    t.float "fg"
+    t.float "fantasy_points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_fantasy_projections_on_player_id"
   end
 
   create_table "fantasy_teams", force: :cascade do |t|
