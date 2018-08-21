@@ -1,0 +1,20 @@
+<h1>
+  <%= @player.display_name %>
+</h1>
+
+<% @projections.each do |projection| %>
+<% if projection.position = "QB" %>
+  <ul>
+    <li><strong>Fantasy Points: <%= projection.fantasy_points %></strong></li>
+    <% avg_points_game = projection.fantasy_points / 17 %>
+    <li><strong>Points Per Game: <%= avg_points_game.to_i %></strong></li>
+    <li>Completions: <%= projection.completions %></li>
+    <li>Attempts: <%= projection.attempts %></li>
+    <li>Passing Yards: <%= projection.passing_yards %></li>
+    <li>Passing TDs: <%= projection.passing_td %></li>
+    <li>Passing INTs: <%= projection.passing_int %></li>
+    <li>Rush Yards: <%= projection.rush_yards %></li>
+    <li>Rush TDs: <%= projection.rush_td %></li>
+<% end %>
+  </ul>
+<% end %>

@@ -23,7 +23,7 @@
   <tbody>
     <% @fantasy_players.each do |player| %>
       <tr>
-        <td><%= player.display_name %></td>
+        <td><%= link_to player.display_name, fantasy_projection_path(player.id) %></td>
         <td><%= player.position %></td>
         <td><%= player.team %></td>
         <td><%= player.nerd_rank %></td>
