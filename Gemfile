@@ -25,6 +25,8 @@ gem 'json'
 gem 'httparty'
 gem 'will_paginate', '3.1.5'
 gem 'filterrific'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

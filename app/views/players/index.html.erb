@@ -5,6 +5,7 @@
     <% spentCash = FantasyPlayer.calculateAuctionCash(team) %>
     <%= number_to_currency(auctionCash - spentCash) %> ||</text>
 <% end %>
+
 <h1>Players</h1>
 
 <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
