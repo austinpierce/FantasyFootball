@@ -32,7 +32,7 @@
         <td><%= player.fantasy_team.fantasy_team_name %></td>
         <td><%= player.fantasy_player.watch %></td>
         <td><%= player.fantasy_player.keeper %></td>
-        <% projected_price = player.fantasy_player.auction_projected_price * 10 %>
+        <% projected_price = player.fantasy_player.auction_projected_price.to_f * 10 %>
         <td><%= number_to_currency(projected_price) %></td>
         <td><%= number_to_currency(player.fantasy_player.auction_spend_price) %></td>
         <td><%= number_to_currency(player.fantasy_player.auction_sold_price) %></td>

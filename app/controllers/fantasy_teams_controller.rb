@@ -18,6 +18,20 @@ class FantasyTeamsController < ApplicationController
     end
   end
   
+  def edit
+    @fantasyTeam = FantasyTeam.find(params[:id])
+  end
+  
+  def update
+    @fantasyTeam = FantasyTeam.find(params[:id])
+    if @fantasyTeam.update(ft_params)
+      flash[:notice] = "Updated"
+      redirect_to fantasy_teams_path
+    else
+      render 'edit'
+    end
+  end
+  
   def show
     @fantasyTeam = FantasyTeam.find(params[:id])
     @players = FantasyPlayer.joins(:player).where(fantasy_team_id: @fantasyTeam)
