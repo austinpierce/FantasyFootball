@@ -14,4 +14,8 @@ class FantasyPlayer < ApplicationRecord
     FantasyPlayer.where(fantasy_team_id: teamID).sum(:auction_sold_price)
   end
   
+  def self.calculateNerdRank(teamID)
+    FantasyPlayer.joins(:player).where(fantasy_team_id: teamID).sum(:nerd_rank)
+  end
+  
 end
