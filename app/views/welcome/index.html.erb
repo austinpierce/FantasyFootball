@@ -2,6 +2,10 @@
   Welcome
 </h1>
 
+<h2>
+  <%= ENV["API_FOOTBALL"] %>
+</h2>
+
 <%= link_to 'Test', hello_world_path, method: :get %><br>
 <%= link_to 'Load Draft Rankings', load_draft_rankings_path, method: :get %><br>
 <%= link_to 'Load Fantasy Players', load_fantasy_players_path, method: :get %><br>
