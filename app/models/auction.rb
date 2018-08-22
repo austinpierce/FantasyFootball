@@ -3,7 +3,7 @@ class Auction < ApplicationRecord
   belongs_to :player
   
   def self.InitialAuction
-    allAuction = HTTParty.get("https://www.fantasyfootballnerd.com/service/auction-enhanced/json/#{ENV["FOOTBALL_API"]}/ppr/")
+    allAuction = HTTParty.get("https://www.fantasyfootballnerd.com/service/auction-enhanced/json/#{ENV["API_FOOTBALL"]}/ppr/")
     auction = allAuction[2]
     playerSize = auction["Players"].size
     arrayPosition = 0

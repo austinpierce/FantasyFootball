@@ -98,7 +98,7 @@ class Player < ApplicationRecord
 #####################################################
   
   def self.InitialDraftRankings
-    players = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-rankings/json/#{ENV["FOOTBALL_API"]}/1/")
+    players = HTTParty.get("https://www.fantasyfootballnerd.com/service/draft-rankings/json/#{ENV["API_FOOTBALL"]}/1/")
 
     playerSize = players["DraftRankings"].size
     arrayPosition = 0
