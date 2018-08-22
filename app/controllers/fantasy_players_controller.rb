@@ -23,7 +23,7 @@ class FantasyPlayersController < ApplicationController
     end
     
     def fantasy_player_params
-      params.require(:fantasy_player).permit(:fantasy_team_id, :watch, :keeper, :auction_spend_price, :auction_sold_price)
+      params.require(:fantasy_player).permit(:fantasy_team_id, :watch, :keeper, :auction_spend_price, :auction_sold_price, :rookie_asset)
     end
     
 end

@@ -13,6 +13,7 @@ class Player < ApplicationRecord
      :filter_player_position,
      :filter_fantasy_team,
      :filter_watching,
+     :filter_rookie_asset,
      :sorted_by
    ]
  )
@@ -27,6 +28,10 @@ class Player < ApplicationRecord
   
   scope :filter_watching, lambda { |watching|
     where(fantasy_players: { watch: watching }).joins(:fantasy_player)
+  }
+
+  scope :filter_rookie_asset, lambda { |rookieAsset|
+    where(fantasy_players: { rookie_asset: rookieAsset }).joins(:fantasy_player)
   }
   
   scope :search_query, lambda { |query|
@@ -77,6 +82,10 @@ class Player < ApplicationRecord
   
   def self.options_for_watch
     FantasyPlayer.select(:watch).distinct.map(&:watch)
+  end
+  
+  def self.options_for_rookie_asset
+    FantasyPlayer.select(:rookie_asset).distinct.map(&:rookie_asset)
   end
   
   def self.options_for_sorted_by

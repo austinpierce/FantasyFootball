@@ -41,6 +41,14 @@
     ) %>
 </div>
 <div>
+    Rookie Asset
+    <%= f.select(
+      :filter_rookie_asset,
+      @filterrific.select_options[:filter_rookie_asset],
+      { include_blank: '- All -' }
+    ) %>
+</div>
+<div>
     Sorted by
     <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
 </div>
