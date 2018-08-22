@@ -1,7 +1,13 @@
 <h1>
   Team <%= @fantasyTeam.fantasy_team_name %>
 </h1>
-Cash <%= @fantasyTeam.auction_cash %>
+<h2>
+  <% spentCash = FantasyPlayer.calculateAuctionCash(@fantasyTeam) %>
+  <% auctionCash = @fantasyTeam.auction_cash %>
+ Auction Cash <%= number_to_currency(auctionCash) %><br>
+ Remaining Cash <%= number_to_currency(auctionCash - spentCash) %>
+</h2>
+
 <h2>
   Player Count: <%= @players.count %><br>
   <%= FantasyTeam.position_count(@fantasyTeam) %>

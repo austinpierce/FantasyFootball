@@ -10,4 +10,8 @@ class FantasyPlayer < ApplicationRecord
     players.each { |x| FantasyPlayer.create(player_id: "#{x}") }
   end
  
+  def self.calculateAuctionCash(teamID)
+    FantasyPlayer.where(fantasy_team_id: teamID).sum(:auction_sold_price)
+  end
+  
 end
